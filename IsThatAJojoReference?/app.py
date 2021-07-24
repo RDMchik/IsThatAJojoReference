@@ -10,15 +10,8 @@ class Enviroment:
         self.configData = json.loads(configFile.read())
         configFile.close()
 
-        self.targets = []
-
 client = discord.Client()
 env = Enviroment()
-
-@client.event
-async def on_ready():
-    
-    pass
 
 @client.event
 async def on_message(message):
@@ -27,10 +20,6 @@ async def on_message(message):
 
     if message.author.bot:
         return
-    
-    if not message.author in env.targets:
-        env.targets.append(message.author)
-        print("author added")
 
     await message.channel.send("Is that a jojo reference?")
     await dm(message.author, 5)
